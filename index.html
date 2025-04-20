@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    Project author information
+        name: Pavel Karlin
+        email: locky481@gmail.com
+        discord (ENGETO SERVER): eLocky11
+        github: https://github.com/eLocky11
+
+    Project information
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple astronomical weather information</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/query.css" />
+</head>
+
+<body class="day">
+    <header>
+        <div class="content">
+            <h1>Astro-Wether on Earth</h1>
+            <nav>
+                <ul>
+                    <li><a href="#daily-img">Photo of the Day</a></li>
+                    <li><a href="#storm-info">Geo-storms Info</a></li>
+                    <li><a href="#contacts">Contacts</a></li>
+                </ul>
+            </nav>
+            <button id="changeTheme"><span>Change Theme</span></button>
+            <div id="user-datetime" class="user-datetime"></div>
+        </div>
+    </header>
+
+    <!-- daily image -->
+    <section id="daily-img">
+        <div class="content">
+            <h2>Photos of the Day</h2>
+            <div id="daily-insert" class="insert"></div>
+        </div>
+    </section>
+
+    <!-- storm events -->
+    <section id="storm-info">
+        <div class="content">
+            <h2>Geomagnetic Storms Information</h2>
+            <div id="storm-insert" class="insert"></div>
+        </div>
+    </section>
+
+    <script src="src/script.js"></script>
+</body>
+
+</html>

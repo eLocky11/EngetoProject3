@@ -1,0 +1,160 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html settings */
+html {
+    scroll-behavior: smooth;
+}
+
+/* base styles */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    position: relative;
+    color: #333;
+    transition: color 0.5s ease;
+    overflow-x: hidden;
+}
+
+body a {
+    color: #333;
+    text-decoration: none;
+}
+
+body.night a {
+    color: #ccc;
+}
+
+h1,
+h2 {
+    margin: 20px;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: right;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+body::before {
+    background-image: url("img/back_day.png");
+    opacity: 1;
+}
+
+body::after {
+    background-image: url("img/back_night.png");
+}
+
+body.day::before {
+    opacity: 1;
+}
+
+body.day::after {
+    opacity: 0;
+}
+
+body.night {
+    color: #ccc;
+}
+
+body.night::before {
+    opacity: 0;
+}
+
+body.night::after {
+    opacity: 1;
+}
+
+.content {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    padding: 10px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+body.day .content {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+body.night .content {
+    background-color: rgba(20, 30, 60, 0.5);
+}
+
+/* header */
+header {
+    margin-bottom: 40px;
+    display: grid;
+}
+
+header h1 {
+    text-align: center;
+}
+
+header nav {
+    text-decoration: none;
+    text-align: start;
+    color: black;
+}
+
+header .user-datetime {
+    text-align: end;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* daily image */
+.daily-image {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+}
+
+.daily-image h3 {
+    padding-top: 20px;
+    grid-column: 1 / -1;
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+}
+
+.daily-image .daily-image-photo {
+    position: relative;
+}
+
+.daily-image .daily-image-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+    z-index: 1;
+}
+
+.daily-image .daily-image-photo img:hover {
+    transform: scale(1.025);
+}
+
+.daily-image .daily-image-desc p {
+    margin-top: 0;
+    line-height: 1.4;
+}
+
+/* storm events */
+.storm-event {
+    margin-top: 20px;
+    padding: 10px;
+}

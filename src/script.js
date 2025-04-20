@@ -1,0 +1,156 @@
+// consts
+const locale = "en-US";
+const dateFormatter = new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "2-digit" });
+const timeFormatter = new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+
+const userDatetimeEl = document.getElementById("user-datetime");
+const dailyImgSection = document.getElementById("daily-insert");
+const stormInfoSection = document.getElementById("storm-insert");
+
+const apiKey = '5RqBZjQI4rrfEXoNIwpbEKdYF57IVQkyzBGX1d2h';
+const apiAPOD = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+const apiDONKI = `https://api.nasa.gov/DONKI/GST?api_key=${apiKey}`;
+
+// user date and time viewer
+function updateUserDateTime() {
+    const now = new Date();
+    userDatetimeEl.textContent = `${dateFormatter.format(now)}, ${timeFormatter.format(now)}`;
+}
+
+// theme changer method
+function initThemeToggle() {
+    const button = document.getElementById("changeTheme");
+    const body = document.body;
+
+    button.addEventListener("click", () => {
+        body.classList.toggle("day");
+        body.classList.toggle("night");
+        console.log("Theme toggled:", body.className);
+    });
+}
+
+// fetching data from ulr
+async function fetchJson(url) {
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    } catch (e) {
+        console.error(`Fetch error (${url}):`, e);
+        return null;
+    }
+}
+
+// date formate for daily images
+function formatDate(dt) {
+    return dt.toISOString().split('T')[0];
+}
+
+// date randomizer
+function getRandomDate() {
+    const start = new Date(1995, 5, 16);
+    const end = new Date();
+    end.setDate(end.getDate() - 2);
+    const diff = end.getTime() - start.getTime();
+    const rnd = new Date(start.getTime() + Math.random() * diff);
+    return formatDate(rnd);
+}
+
+// fetch APOD data with dates
+function fetchApodByDate(date) {
+    const url = `${apiAPOD}&date=${date}`;
+    return fetchJson(url);
+}
+
+// daily image rendering method
+function renderDailyImages(list) {
+    dailyImgSection.textContent = "";
+
+    list.forEach(item => {
+        const { data, label } = item;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'daily-image';
+
+        // use HDURL if it is or url
+        const fullImg = data.hdurl || data.url;
+
+        wrapper.innerHTML = `
+            <h3>${label}: ${data.title}</h3>
+            <div class="daily-image-photo">
+            <a href="${fullImg}" target="_blank" rel="noopener">
+                <img src="${data.url}" alt="${data.title}">
+            </a>
+            </div>
+            <div class="daily-image-desc">
+            <p>${data.explanation}</p>
+            </div>
+        `;
+        dailyImgSection.append(wrapper);
+    });
+}
+
+
+// storms rendering method
+function renderStormEvents(data) {
+    stormInfoSection.textContent = "";
+    if (!data?.length) {
+        stormInfoSection.textContent = "No geomagnetic storms";
+        return;
+    }
+
+    const frag = document.createDocumentFragment();
+    data.forEach(evt => {
+        const card = document.createElement("div");
+        card.className = "storm-event";
+        card.innerHTML = `
+            <h3>Storm: ${evt.gstID}</h3>
+            <p><strong>Beginning:</strong> ${new Date(evt.startTime).toLocaleString()}</p>
+            <p>
+            <a href="https://en.wikipedia.org/wiki/K-index" target="_blank"><strong><i>K</i><sub>p</sub>-index</strong></a>: ${evt.allKpIndex.map(i => i.kpIndex).join(", ")}
+            </p>
+        `;
+        frag.append(card);
+    });
+    stormInfoSection.append(frag);
+}
+
+// initialize
+async function init() {
+    updateUserDateTime();
+    setInterval(updateUserDateTime, 1000);
+    initThemeToggle();
+
+    // loaders
+    dailyImgSection.textContent = "Loading daily images...";
+    stormInfoSection.textContent = "Loading geomagnetic storms info...";
+
+    // gen three dates
+    const today = formatDate(new Date());
+    const yesterday = formatDate(new Date(Date.now() - 86400000));
+    let randomDate;
+    do {
+        randomDate = getRandomDate();
+    } while (randomDate === today || randomDate === yesterday);
+
+    const [
+        todayData,
+        yesterdayData,
+        randomData,
+        stormData
+    ] = await Promise.all([
+        fetchApodByDate(today),
+        fetchApodByDate(yesterday),
+        fetchApodByDate(randomDate),
+        fetchJson(apiDONKI)
+    ]);
+
+    // all render
+    renderDailyImages([
+        { label: 'Today', data: todayData },
+        { label: 'Yesterday', data: yesterdayData },
+        { label: 'Random Day', data: randomData },
+    ]);
+    renderStormEvents(stormData);
+}
+
+init();
