@@ -16,7 +16,7 @@ body {
     padding: 20px;
     position: relative;
     color: #333;
-    transition: color 0.5s ease;
+    transition: background 0.5s ease, color 0.5s ease;
     overflow-x: hidden;
 }
 
@@ -81,7 +81,6 @@ body.night::after {
 }
 
 .content {
-    transition: background-color 0.5s ease, color 0.5s ease;
     padding: 10px;
     margin-bottom: 40px;
     border-radius: 10px;
@@ -140,7 +139,6 @@ header nav ul li a {
     display: block;
     padding: 12px;
     font-size: 1rem;
-    transition: background 0.3s ease;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
@@ -174,10 +172,41 @@ header .user-datetime {
 }
 
 /* password validation */
+#login input[type="password"],
+#login button {
+    display: inline-block;
+    padding: 12px;
+    font-size: 1rem;
+    color: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px hsl(0 0% 0% / .15);
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#login input[type="password"] {
+    width: 200px;
+}
+
+#login button {
+    cursor: pointer;
+    background-clip: padding-box;
+    margin-top: 0;
+}
+
+#login input[type="password"]:focus,
+#login button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    outline: none;
+}
+
 #pass-error {
     min-height: 1.5em;
     margin-top: 5px;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
 /* daily image */
@@ -190,7 +219,7 @@ header .user-datetime {
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 12px hsl(0 0% 0% / .15);
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 10px;
 }
 
@@ -209,7 +238,7 @@ header .user-datetime {
     width: 100%;
     height: auto;
     border-radius: 4px;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
     transform-origin: center center;
     z-index: 1;
 }
@@ -234,6 +263,27 @@ header .user-datetime {
     padding: 10px;
 }
 
+/* contacts */
+.contacts {
+    margin: 0;
+    padding: 10px;
+}
+
+.contacts a {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px hsl(0 0% 0% / .15);
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.contacts a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    outline: none;
+}
+
 /* footer */
 footer {
     text-align: center;
@@ -251,7 +301,7 @@ footer {
     padding: 12px;
     cursor: pointer;
     z-index: 1000;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
 #toTop i {

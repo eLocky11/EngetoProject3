@@ -26,7 +26,7 @@
             <h1>Astro-Weather on Earth</h1>
             <div id="user-datetime" class="user-datetime"></div>
         </div>
-        <nav class="content nav-bar">
+        <nav class="content">
             <ul>
                 <li><a href="#daily-img">Photo of the Day</a></li>
                 <li><a href="#storm-info">Geo-storms Info</a></li>
@@ -37,8 +37,21 @@
     </header>
 
     <main>
+        <!-- about section -->
+        <section id="about" class="content">
+            <h2>About</h2>
+            <div class="about content">
+                <p>
+                    About us:
+                    1
+                    2
+                    3
+                </p>
+            </div>
+        </section>
+
         <!-- login section -->
-        <section id="login" class="section-block">
+        <section id="login">
             <div class="content">
                 <h2>Login</h2>
                 <form id="login-form">
@@ -51,25 +64,30 @@
         </section>
 
         <!-- daily image -->
-        <section id="daily-img" class="section-block">
+        <section id="daily-img">
             <div class="content">
                 <h2>Photos of the Day</h2>
-                <div id="daily-insert" class="insert"></div>
+                <div id="daily-insert"></div>
             </div>
         </section>
 
         <!-- storm events -->
-        <section id="storm-info" class="section-block">
+        <section id="storm-info">
             <div class="content">
                 <h2>Geomagnetic Storms Information</h2>
-                <div id="storm-insert" class="insert"></div>
+                <div id="storm-insert"></div>
             </div>
         </section>
 
         <!-- contacts -->
-        <section id="contacts" class="section-block">
+        <section id="contacts">
             <div class="content">
                 <h2>Contacts</h2>
+                <div class="contacts">
+                    <a href="https://github.com/eLocky11" target="_blank">GitHub <i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/pavel-karlin-814a6b361/" target="_blank">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.reddit.com/user/Far_Newspaper5331/" target="_blank">Reddit <i class="fa-brands fa-reddit"></i></a>
+                </div>
             </div>
         </section>
     </main>
