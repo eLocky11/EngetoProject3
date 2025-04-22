@@ -6,8 +6,9 @@ const timeFormatter = new Intl.DateTimeFormat(locale, { hour: "2-digit", minute:
 const userDatetimeEl = document.getElementById("user-datetime");
 const dailyImgSection = document.getElementById("daily-insert");
 const stormInfoSection = document.getElementById("storm-insert");
+const toTopBtn = document.getElementById("toTop");
 
-const apiKey = '5RqBZjQI4rrfEXoNIwpbEKdYF57IVQkyzBGX1d2h';
+const apiKey = "5RqBZjQI4rrfEXoNIwpbEKdYF57IVQkyzBGX1d2h";
 const apiAPOD = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
 const apiDONKI = `https://api.nasa.gov/DONKI/GST?api_key=${apiKey}`;
 
@@ -21,13 +22,55 @@ function updateUserDateTime() {
 function initThemeToggle() {
     const button = document.getElementById("changeTheme");
     const body = document.body;
+    const icon = button.querySelector("i")
 
     button.addEventListener("click", () => {
         body.classList.toggle("day");
         body.classList.toggle("night");
         console.log("Theme toggled:", body.className);
+
+        if (body.classList.contains("night")) {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+        } else {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        }
     });
 }
+
+// to top button
+function handleScroll() {
+    if (window.scrollY > 200) {
+        toTopBtn.classList.add("show");
+        toTopBtn.classList.remove("hide");
+    } else {
+        toTopBtn.classList.add("hide");
+        toTopBtn.classList.remove("show");
+    }
+}
+
+// smooth scrolling
+toTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// password validator
+const form = document.getElementById("login-form");
+form.addEventListener("submit", e => {
+    const p1 = document.getElementById("pass1").value;
+    const p2 = document.getElementById("pass2").value;
+    const err = document.getElementById("pass-error");
+
+    if (p1 !== p2) {
+        e.preventDefault();
+        err.textContent = "Passwords do not match!";
+    } else {
+        e.preventDefault()
+        err.textContent = "Passwords match!";
+    }
+});
+
 
 // fetching data from ulr
 async function fetchJson(url) {
@@ -43,7 +86,7 @@ async function fetchJson(url) {
 
 // date formate for daily images
 function formatDate(dt) {
-    return dt.toISOString().split('T')[0];
+    return dt.toISOString().split("T")[0];
 }
 
 // date randomizer
@@ -68,8 +111,8 @@ function renderDailyImages(list) {
 
     list.forEach(item => {
         const { data, label } = item;
-        const wrapper = document.createElement('div');
-        wrapper.className = 'daily-image';
+        const wrapper = document.createElement("div");
+        wrapper.className = "daily-image";
 
         // use HDURL if it is or url
         const fullImg = data.hdurl || data.url;
@@ -146,11 +189,13 @@ async function init() {
 
     // all render
     renderDailyImages([
-        { label: 'Today', data: todayData },
-        { label: 'Yesterday', data: yesterdayData },
-        { label: 'Random Day', data: randomData },
+        { label: "Today", data: todayData },
+        { label: "Yesterday", data: yesterdayData },
+        { label: "Random Day", data: randomData },
     ]);
     renderStormEvents(stormData);
 }
 
+
+window.addEventListener("scroll", handleScroll);
 init();

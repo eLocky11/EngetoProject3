@@ -6,49 +6,83 @@
         email: locky481@gmail.com
         discord (ENGETO SERVER): eLocky11
         github: https://github.com/eLocky11
-
+    
     Project information
     
-    -->
-
+-->
 <head>
-    <meta charset="UTF-8">
-    <title>Simple astronomical weather information</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astro-Weather on Earth</title>
     <link rel="stylesheet" href="src/style.css" />
     <link rel="stylesheet" href="src/query.css" />
+    <script src="https://kit.fontawesome.com/8ba26cb1dc.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="day">
+    <!-- header -->
     <header>
-        <div class="content">
-            <h1>Astro-Wether on Earth</h1>
-            <nav>
-                <ul>
-                    <li><a href="#daily-img">Photo of the Day</a></li>
-                    <li><a href="#storm-info">Geo-storms Info</a></li>
-                    <li><a href="#contacts">Contacts</a></li>
-                </ul>
-            </nav>
-            <button id="changeTheme"><span>Change Theme</span></button>
+        <div class="head">
+            <h1>Astro-Weather on Earth</h1>
             <div id="user-datetime" class="user-datetime"></div>
         </div>
+        <nav class="content nav-bar">
+            <ul>
+                <li><a href="#daily-img">Photo of the Day</a></li>
+                <li><a href="#storm-info">Geo-storms Info</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+            </ul>
+            <button id="changeTheme"><i class="fa-regular fa-sun"></i></button>
+        </nav>
     </header>
 
-    <!-- daily image -->
-    <section id="daily-img">
-        <div class="content">
-            <h2>Photos of the Day</h2>
-            <div id="daily-insert" class="insert"></div>
-        </div>
-    </section>
+    <main>
+        <!-- login section -->
+        <section id="login" class="section-block">
+            <div class="content">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="password" id="pass1" placeholder="Password" required />
+                    <input type="password" id="pass2" placeholder="Repeat password" required />
+                    <button type="submit">Check passwords</button>
+                    <p id="pass-error" class="error"></p>
+                </form>
+            </div>
+        </section>
 
-    <!-- storm events -->
-    <section id="storm-info">
-        <div class="content">
-            <h2>Geomagnetic Storms Information</h2>
-            <div id="storm-insert" class="insert"></div>
-        </div>
-    </section>
+        <!-- daily image -->
+        <section id="daily-img" class="section-block">
+            <div class="content">
+                <h2>Photos of the Day</h2>
+                <div id="daily-insert" class="insert"></div>
+            </div>
+        </section>
+
+        <!-- storm events -->
+        <section id="storm-info" class="section-block">
+            <div class="content">
+                <h2>Geomagnetic Storms Information</h2>
+                <div id="storm-insert" class="insert"></div>
+            </div>
+        </section>
+
+        <!-- contacts -->
+        <section id="contacts" class="section-block">
+            <div class="content">
+                <h2>Contacts</h2>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="content">
+        <p>© 2025 - Pavel Karlin. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="toTop" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="src/script.js"></script>
 </body>

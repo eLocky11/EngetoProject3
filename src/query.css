@@ -1,3 +1,89 @@
 @media (max-width: 768px) {
-    
+    body {
+        padding: 10px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    header .head h1 {
+        font-size: 1.6rem;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    header nav button#changeTheme {
+        align-self: flex-end;
+        margin-right: 5px;
+    }
+
+    .content {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .daily-image {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .daily-image h3 {
+        align-self: stretch;
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 8px;
+    }
+
+    .daily-image .daily-image-photo {
+        width: 100%;
+        padding: 4px;
+        overflow: hidden;
+    }
+
+    .daily-image .daily-image-photo img {
+        width: 100%;
+        display: block;
+    }
+
+    .daily-image .daily-image-desc {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .daily-image .daily-image-desc p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    .storm-event {
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+    }
+
+    .storm-event h3 {
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+    }
+
+    .storm-event p {
+        font-size: 0.9rem;
+        margin: 2px 0;
+    }
+
+    #toTop {
+        bottom: 20px;
+        right: 20px;
+    }
 }
