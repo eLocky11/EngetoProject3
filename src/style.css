@@ -95,6 +95,17 @@ body.night .content {
     background-color: rgba(20, 30, 60, 0.5);
 }
 
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: inherit;
+    position: absolute;
+    z-index: 1;
+}
+
 /* header */
 header {
     margin-bottom: 40px;
@@ -171,9 +182,40 @@ header .user-datetime {
     font-size: 1rem;
 }
 
+/* about */
+.about-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px hsl(0 0% 0% / .15);
+    margin-top: 10px;
+}
+
+.about-card h3 {
+    margin-top: 0;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    padding-bottom: 0.25rem;
+}
+
+.about-card p {
+    line-height: 1.6;
+    text-align: justify;
+}
+
 /* password validation */
-#login input[type="password"],
-#login button {
+.login-form input[type="password"],
+.login-form button {
     display: inline-block;
     padding: 12px;
     font-size: 1rem;
@@ -185,20 +227,21 @@ header .user-datetime {
     text-align: center;
     vertical-align: middle;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-#login input[type="password"] {
+.login-form input[type="password"] {
     width: 200px;
 }
 
-#login button {
+.login-form button {
     cursor: pointer;
     background-clip: padding-box;
     margin-top: 0;
 }
 
-#login input[type="password"]:focus,
-#login button:hover {
+.login-form input[type="password"]:focus,
+.login-form button:hover {
     background: rgba(255, 255, 255, 0.25);
     outline: none;
 }
@@ -229,11 +272,11 @@ header .user-datetime {
     font-size: 1.2rem;
 }
 
-.daily-image .daily-image-photo {
+.daily-image .daily-image-media {
     position: relative;
 }
 
-.daily-image .daily-image-photo img {
+.daily-image .daily-image-media img {
     display: block;
     width: 100%;
     height: auto;
@@ -243,8 +286,8 @@ header .user-datetime {
     z-index: 1;
 }
 
-.daily-image .daily-image-photo img:hover {
-    transform: scale(1.025);
+.daily-image .daily-image-media img:hover {
+    transform: scale(1.015);
 }
 
 .daily-image .daily-image-desc p {
@@ -266,7 +309,7 @@ header .user-datetime {
 /* contacts */
 .contacts {
     margin: 0;
-    padding: 10px;
+    padding-bottom: 1;
 }
 
 .contacts a {

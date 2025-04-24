@@ -18,6 +18,11 @@ function updateUserDateTime() {
     userDatetimeEl.textContent = `${dateFormatter.format(now)}, ${timeFormatter.format(now)}`;
 }
 
+// burger dropdown logic
+document.getElementById("burger").addEventListener("click", () => {
+    document.getElementById("nav-menu").classList.toggle("show");
+});
+
 // theme changer method
 function initThemeToggle() {
     const button = document.getElementById("changeTheme");
@@ -117,13 +122,26 @@ function renderDailyImages(list) {
         // use HDURL if it is or url
         const fullImg = data.hdurl || data.url;
 
+        const mediaHTML = data.media_type === "video"
+            ? `
+                <div class="daily-image-media">
+                <iframe
+                    src="${data.url}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+                </div>`
+            : `
+                <div class="daily-image-media">
+                <a href="${fullImg}" target="_blank" rel="noopener">
+                    <img src="${data.url}" alt="${data.title}" />
+                </a>
+                </div>`;
+
         wrapper.innerHTML = `
             <h3>${label}: ${data.title}</h3>
-            <div class="daily-image-photo">
-            <a href="${fullImg}" target="_blank" rel="noopener">
-                <img src="${data.url}" alt="${data.title}">
-            </a>
-            </div>
+            ${mediaHTML}
             <div class="daily-image-desc">
             <p>${data.explanation}</p>
             </div>

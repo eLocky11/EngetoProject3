@@ -10,13 +10,15 @@
     Project information
     
 -->
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Astro-Weather on Earth</title>
     <link rel="stylesheet" href="src/style.css" />
     <link rel="stylesheet" href="src/query.css" />
-    <script src="https://kit.fontawesome.com/8ba26cb1dc.js" crossorigin="anonymous"></script>
+    <script defer src="src/script.js"></script>
+    <script defer src="https://kit.fontawesome.com/8ba26cb1dc.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="day">
@@ -26,13 +28,16 @@
             <h1>Astro-Weather on Earth</h1>
             <div id="user-datetime" class="user-datetime"></div>
         </div>
-        <nav class="content">
-            <ul>
-                <li><a href="#daily-img">Photo of the Day</a></li>
+        <nav class="nav content">
+            <button id="burger" class="burger" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <button id="changeTheme"><i class="fa-regular fa-sun"></i></button>
+            <ul id="nav-menu">
+                <li><a href="#daily-img">Photo's of the Day</a></li>
                 <li><a href="#storm-info">Geo-storms Info</a></li>
                 <li><a href="#contacts">Contacts</a></li>
             </ul>
-            <button id="changeTheme"><i class="fa-regular fa-sun"></i></button>
         </nav>
     </header>
 
@@ -40,21 +45,42 @@
         <!-- about section -->
         <section id="about" class="content">
             <h2>About</h2>
-            <div class="about content">
+            <article class="about-card">
                 <p>
-                    About us:
-                    1
-                    2
-                    3
+                    This page provides data from the NASA Open API's.
                 </p>
-            </div>
+            </article>
+            <article class="about-card">
+                <h3>APOD</h3>
+                <p>
+                    One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website
+                    is one of the most popular websites across all federal agencies. It has the popular appeal of a
+                    Justin Bieber video. This endpoint structures the APOD imagery and associated metadata so that it
+                    can be repurposed for other applications. In addition, if the concept_tags parameter is set to True,
+                    then keywords derived from the image explanation are returned. These keywords could be used as
+                    auto-generated hashtags for twitter or instagram feeds; but generally help with discoverability of
+                    relevant imagery. <br>
+                </p>
+            </article>
+            <article class="about-card">
+                <h3>DONKI</h3>
+                <p>
+                    The Space Weather Database Of Notifications, Knowledge, Information (DONKI) is a comprehensive
+                    on-line tool for space weather forecasters, scientists, and the general space science community.
+                    DONKI chronicles the daily interpretations of space weather observations, analysis, models,
+                    forecasts, and notifications provided by the Space Weather Research Center (SWRC), comprehensive
+                    knowledge-base search functionality to support anomaly resolution and space science research,
+                    intelligent linkages, relationships, cause-and-effects between space weather activities and
+                    comprehensive webservice API access to information stored in DONKI. <br>
+                </p>
+            </article>
         </section>
 
         <!-- login section -->
         <section id="login">
             <div class="content">
                 <h2>Login</h2>
-                <form id="login-form">
+                <form class="login-form" id="login-form">
                     <input type="password" id="pass1" placeholder="Password" required />
                     <input type="password" id="pass2" placeholder="Repeat password" required />
                     <button type="submit">Check passwords</button>
@@ -85,8 +111,10 @@
                 <h2>Contacts</h2>
                 <div class="contacts">
                     <a href="https://github.com/eLocky11" target="_blank">GitHub <i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/pavel-karlin-814a6b361/" target="_blank">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://www.reddit.com/user/Far_Newspaper5331/" target="_blank">Reddit <i class="fa-brands fa-reddit"></i></a>
+                    <a href="https://www.linkedin.com/in/pavel-karlin-814a6b361/" target="_blank">LinkedIn <i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.reddit.com/user/Far_Newspaper5331/" target="_blank">Reddit <i
+                            class="fa-brands fa-reddit"></i></a>
                 </div>
             </div>
         </section>
@@ -101,8 +129,6 @@
     <button id="toTop" title="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
-
-    <script src="src/script.js"></script>
 </body>
 
 </html>
