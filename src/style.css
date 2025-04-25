@@ -95,15 +95,8 @@ body.night .content {
     background-color: rgba(20, 30, 60, 0.5);
 }
 
-.burger {
+#burger {
     display: none;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: inherit;
-    position: absolute;
-    z-index: 1;
 }
 
 /* header */
@@ -131,11 +124,20 @@ header button {
     color: #333;
 }
 
+#nav-menu {
+    order: 1;
+    display: flex;
+    gap: 20px;
+}
+
+#changeTheme {
+    order: 2;
+    margin-left: auto;
+}
+
 header nav {
-    padding: 10px;
     display: flex;
     align-items: center;
-    width: 100%;
 }
 
 header nav ul {
@@ -308,8 +310,7 @@ header .user-datetime {
 
 /* contacts */
 .contacts {
-    margin: 0;
-    padding-bottom: 1;
+    margin-bottom: 10px;
 }
 
 .contacts a {

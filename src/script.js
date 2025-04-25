@@ -186,8 +186,8 @@ async function init() {
     stormInfoSection.textContent = "Loading geomagnetic storms info...";
 
     // gen three dates
-    const today = formatDate(new Date());
-    const yesterday = formatDate(new Date(Date.now() - 86400000));
+    const today = formatDate(new Date(Date.now() - 43200000));
+    const yesterday = formatDate(new Date(Date.now() - 129600000));
     let randomDate;
     do {
         randomDate = getRandomDate();
